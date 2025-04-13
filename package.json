@@ -5,15 +5,19 @@
   "license": "ISC",
   "author": "",
   "type": "commonjs",
-  "main": "src/server.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "db:migrate": "npx sequelize-cli db:migrate --config src/config/database.js --migrations-path src/migrations --seeders-path src/seeders --models-path src/models",
+    "db:migrate:undo:all": "npx sequelize-cli db:migrate:undo:all --config src/config/database.js --migrations-path src/migrations --seeders-path src/seeders --models-path src/models",
+    "db:migrate:status": "npx sequelize-cli db:migrate:status --config src/config/database.js --migrations-path src/migrations --seeders-path src/seeders --models-path src/models"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.14.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.6",
